@@ -24,12 +24,8 @@ onUnmounted(() => window.removeEventListener("mousemove", update))
 .cursor {
   width: 20px;
   height: 20px;
-  /* border: 0.5px solid white; */
-  border-radius: 50%;
   position: absolute;
   cursor: pointer;
-  transform: translate(-50%, -50%);
-  transition: border 300ms ease;
   pointer-events: none;
   background: url("../assets/shuriken.svg");
   animation: spin 100ms linear infinite;
