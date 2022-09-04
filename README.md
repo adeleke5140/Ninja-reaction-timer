@@ -2,7 +2,7 @@
 
 This is a small sample application to test out my vue skills, wachaa🥷
 
-## Recommended IDE Setup
+## Get set up
 
 To get started:
 
