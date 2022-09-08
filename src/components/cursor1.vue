@@ -1,9 +1,3 @@
-<template>
-  <div>
-    <div class="cursor" ref="cursor"></div>
-  </div>
-</template>
-
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue"
 
@@ -19,6 +13,12 @@ function update(event) {
 onMounted(() => window.addEventListener("mousemove", update))
 onUnmounted(() => window.removeEventListener("mousemove", update))
 </script>
+
+<template>
+  <div>
+    <div class="cursor" ref="cursor"></div>
+  </div>
+</template>
 
 <style>
 .cursor {
