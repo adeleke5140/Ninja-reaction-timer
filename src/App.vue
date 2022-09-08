@@ -1,25 +1,28 @@
 <script setup>
 import { ref } from "vue"
 import Cursor1 from "./components/cursor1.vue"
+import Block from "./components/Block.vue"
 
 const isPlaying = ref(false)
 const delay = ref(null)
 
 const start = () => {
   isPlaying.value = true
-  delay.value = 2000
+  delay.value = 2000 + Math.random() * 5000
+  console.log(delay.value)
 }
 </script>
 
 <template>
   <h1 class="ninja">Ninja Reaction Timer🥷</h1>
-  <button @click="start">
+  <button @click="start" :disabled="isPlaying">
     <span class="text">play</span>
     <span class="perk">🌀</span>
   </button>
   <div class="cursor-container">
     <Cursor1 />
   </div>
+  <Block v-if="isPlaying" :delay="delay" />
 </template>
 
 <style scoped>
