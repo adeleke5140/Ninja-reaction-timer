@@ -1,20 +1,34 @@
 <template>
-  <div class="block" @mousemove="handleKunaiPosition">
+  <div
+    v-if="showBlock"
+    class="block"
+    @click="getDelayAfterClick"
+    @mousemove="handleKunaiPosition"
+  >
     Click me
     <img src="../assets/kunai2.png" class="kunai" ref="kunai" />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue"
+import { ref, onMounted, onUnmounted, onUpdated } from "vue"
 
-defineProps({
+const props = defineProps({
   delay: Number
 })
+
+// defineProps({
+//   delay: Number
+// })
 
 const kunai = ref(null)
 const x = ref(0)
 const y = ref(0)
+const showBlock = ref(false)
+
+const currentTime = ref(null)
+const newTime = ref(null)
+const timeInterval = ref(null)
 
 function handleKunaiPosition(e) {
   x.value = e.offsetX
@@ -23,6 +37,35 @@ function handleKunaiPosition(e) {
   kunai.value.style.top = y.value + "px"
   kunai.value.style.left = x.value + "px"
 }
+
+function toggleShowBlock(props) {
+  const { delay } = props
+  return setTimeout(() => {
+    showBlock.value = true
+    currentTime.value = Date.now()
+    console.log(currentTime.value)
+  }, delay)
+}
+
+function getDelayAfterClick() {
+  newTime.value = Date.now()
+  timeInterval.value = newTime.value - currentTime.value
+  showBlock.value = false
+  console.log(`${timeInterval.value}ms`)
+}
+
+onMounted(() => {
+  console.log("component mounted")
+  toggleShowBlock(props)
+})
+
+onUnmounted(() => {
+  console.log("component unmounted")
+})
+
+// onUpdated(() => {
+//   console.log("component updated")
+// })
 </script>
 
 <style>
