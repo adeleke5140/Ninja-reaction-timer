@@ -20,7 +20,7 @@ onMounted(() => window.addEventListener("mousemove", update))
 onUnmounted(() => window.removeEventListener("mousemove", update))
 </script>
 
-<style scoped>
+<style>
 .cursor {
   width: 20px;
   height: 20px;
@@ -28,7 +28,7 @@ onUnmounted(() => window.removeEventListener("mousemove", update))
   cursor: pointer;
   pointer-events: none;
   background: url("../assets/shuriken.svg");
-  animation: spin 100ms linear infinite;
+  animation: spin 200ms linear infinite;
 }
 
 @keyframes spin {
