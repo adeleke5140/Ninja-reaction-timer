@@ -2,7 +2,7 @@
   <div
     v-if="showBlock"
     class="block"
-    @click="getDelayAfterClick"
+    @click="stopTimer"
     @mousemove="handleKunaiPosition"
   >
     Click me
@@ -26,9 +26,8 @@ const x = ref(0)
 const y = ref(0)
 const showBlock = ref(false)
 
-const currentTime = ref(null)
-const newTime = ref(null)
-const timeInterval = ref(null)
+const timer = ref(null)
+const reactionTime = ref(0)
 
 function handleKunaiPosition(e) {
   x.value = e.offsetX
@@ -42,16 +41,19 @@ function toggleShowBlock(props) {
   const { delay } = props
   return setTimeout(() => {
     showBlock.value = true
-    currentTime.value = Date.now()
-    console.log(currentTime.value)
+    startTimer()
   }, delay)
 }
 
-function getDelayAfterClick() {
-  newTime.value = Date.now()
-  timeInterval.value = newTime.value - currentTime.value
-  showBlock.value = false
-  console.log(`${timeInterval.value}ms`)
+function startTimer() {
+  timer.value = setInterval(() => {
+    reactionTime.value += 10
+  }, 10)
+}
+
+function stopTimer() {
+  clearInterval(timer.value)
+  console.log(reactionTime.value)
 }
 
 onMounted(() => {
