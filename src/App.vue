@@ -8,13 +8,12 @@ const delay = ref(null)
 
 const start = () => {
   isPlaying.value = true
-  delay.value = 2000 + Math.random() * 5000
-  console.log(delay.value)
+  delay.value = Math.floor(2000 + Math.random() * 5000)
 }
 </script>
 
 <template>
-  <h1 class="ninja">Ninja Reaction Timer🥷</h1>
+  <h1 class="ninja">Ninja Reaction 🥷</h1>
   <button @click="start" :disabled="isPlaying">
     <span class="text">play</span>
     <span class="perk">🌀</span>
