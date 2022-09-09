@@ -17,6 +17,8 @@ const props = defineProps({
   delay: Number
 })
 
+const emit = defineEmits(["end"])
+
 // defineProps({
 //   delay: Number
 // })
@@ -54,6 +56,7 @@ function startTimer() {
 function stopTimer() {
   clearInterval(timer.value)
   console.log(reactionTime.value)
+  emit("end", reactionTime.value)
 }
 
 onMounted(() => {
