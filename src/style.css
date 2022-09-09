@@ -19,6 +19,18 @@
   src: local("Karasha"), url(./fonts/Karasha-z8mYw.otf) format("opentype");
 }
 
+@font-face {
+  font-family: "Assassin Ninja";
+  src: local("Assassin Ninja"),
+    url(./fonts/AssassinNinja-7BYyR.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Asian Ninja";
+  src: local("Asian Ninja"),
+    url(./fonts/AsianNinja-z874L.ttf) format("truetype");
+}
+
 a {
   font-weight: 500;
   color: #646cff;
