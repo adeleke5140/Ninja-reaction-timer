@@ -16,7 +16,12 @@ onUnmounted(() => window.removeEventListener("mousemove", update))
 
 <template>
   <div>
-    <div class="cursor" ref="cursor"></div>
+    <img
+      src="../assets/kunai.png"
+      alt="image of a kunai"
+      class="cursor"
+      ref="cursor"
+    />
   </div>
 </template>
 
@@ -27,16 +32,16 @@ onUnmounted(() => window.removeEventListener("mousemove", update))
   position: absolute;
   cursor: pointer;
   pointer-events: none;
-  background: url("../assets/shuriken.svg");
   animation: spin 200ms linear infinite;
+  transform: rotate(635deg);
 }
 
-@keyframes spin {
+/* @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 </style>
