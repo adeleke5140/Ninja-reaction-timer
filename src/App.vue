@@ -16,6 +16,9 @@ const endGame = (reactionTime) => {
   score.value = reactionTime
   isPlaying.value = false
 }
+
+//always remember that the custom event you emit, takes the second parameter as an argument
+//and you can extract it from a function.
 </script>
 
 <template>
@@ -37,6 +40,7 @@ const endGame = (reactionTime) => {
 <style>
 #app {
   max-width: 1024px;
+  overflow: hidden;
 }
 
 .ninja {
