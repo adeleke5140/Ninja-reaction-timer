@@ -4,6 +4,7 @@
     class="block"
     @click="stopTimer"
     @mousemove="handleKunaiPosition"
+    ref="block"
   >
     Click me
     <img src="../assets/kunai2.png" class="kunai" ref="kunai" />
@@ -11,7 +12,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, onUpdated } from "vue"
+import { ref, onMounted, onUnmounted, watchEffect } from "vue"
 
 const props = defineProps({
   delay: Number
@@ -19,9 +20,7 @@ const props = defineProps({
 
 const emit = defineEmits(["end"])
 
-// defineProps({
-//   delay: Number
-// })
+const block = ref(null)
 
 const kunai = ref(null)
 const x = ref(0)
@@ -30,6 +29,18 @@ const showBlock = ref(false)
 
 const timer = ref(null)
 const reactionTime = ref(0)
+
+const blockPositionX = ref(null)
+const blockPositionY = ref(null)
+
+function moveBlockRandomly(block) {
+  blockPositionX.value = Math.random() * 300
+  blockPositionY.value = Math.random() * 300
+
+  block.style.position = "absolute"
+  block.style.top = blockPositionY.value + "px"
+  block.style.left = blockPositionX.value + "px"
+}
 
 function handleKunaiPosition(e) {
   x.value = e.offsetX
@@ -43,6 +54,11 @@ function toggleShowBlock(props) {
   const { delay } = props
   return setTimeout(() => {
     showBlock.value = true
+    watchEffect(() => {
+      if (block.value) {
+        moveBlockRandomly(block.value)
+      }
+    })
     startTimer()
   }, delay)
 }
