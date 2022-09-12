@@ -56,7 +56,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: Karasha;
-  overflow: none;
+  overflow: hidden;
 }
 
 h1 {
