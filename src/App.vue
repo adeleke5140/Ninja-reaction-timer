@@ -7,20 +7,30 @@ import Audio from "./components/audio.vue"
 import { useSound } from "@vueuse/sound"
 import bgMusic from "./assets/audio/blades.mp3"
 
-const { play } = useSound(bgMusic)
+const { play, stop } = useSound(bgMusic, {
+  loop: true
+})
 const isPlaying = ref(false)
 const delay = ref(null)
 const score = ref(null)
+const showResults = ref(false)
 
 const start = () => {
   isPlaying.value = true
+  if (showResults.value) {
+    showResults.value = false
+  }
   delay.value = generateRandomNumber(2000, 7000)
-  console.log(delay.value)
 }
 
-const endGame = (reactionTime) => {
+const endGame = async (reactionTime) => {
   score.value = reactionTime
   isPlaying.value = false
+  showResults.value = true
+
+  await new Promise((res) => setTimeout(res, 3000))
+
+  showResults.value = false
 }
 
 const generateRandomNumber = (min, max) => {
@@ -30,10 +40,12 @@ const generateRandomNumber = (min, max) => {
 function playNinjaIntro(audio) {
   if (audio) {
     play()
+  } else {
+    stop()
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
   playNinjaIntro()
 })
 
@@ -57,7 +69,7 @@ onMounted(() => {
     @end="endGame"
     :playAudio="playAudio"
   />
-  <p>
+  <p v-if="showResults">
     Reaction time: <span class="score">{{ score }}</span
     >ms
   </p>
