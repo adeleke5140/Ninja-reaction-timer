@@ -33,9 +33,12 @@ const reactionTime = ref(0)
 const blockPositionX = ref(null)
 const blockPositionY = ref(null)
 
+const getRandomPosition = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min)
+
 function moveBlockRandomly(block) {
-  blockPositionX.value = Math.random() * 300
-  blockPositionY.value = Math.random() * 300
+  blockPositionX.value = getRandomPosition(300, 700)
+  blockPositionY.value = getRandomPosition(300, 700)
 
   block.style.position = "absolute"
   block.style.top = blockPositionY.value + "px"
