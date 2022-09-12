@@ -1,15 +1,21 @@
 <script setup>
-import { ref } from "vue"
+import { ref, onMounted } from "vue"
 import Cursor1 from "./components/cursor1.vue"
 import Block from "./components/Block.vue"
+import Audio from "./components/audio.vue"
 
+import { useSound } from "@vueuse/sound"
+import bgMusic from "./assets/audio/blades.mp3"
+
+const { play } = useSound(bgMusic)
 const isPlaying = ref(false)
 const delay = ref(null)
 const score = ref(null)
 
 const start = () => {
   isPlaying.value = true
-  delay.value = Math.floor(2000 + Math.random() * 5000)
+  delay.value = generateRandomNumber(2000, 7000)
+  console.log(delay.value)
 }
 
 const endGame = (reactionTime) => {
@@ -17,11 +23,26 @@ const endGame = (reactionTime) => {
   isPlaying.value = false
 }
 
+const generateRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function playNinjaIntro(audio) {
+  if (audio) {
+    play()
+  }
+}
+
+onMounted(() => {
+  playNinjaIntro()
+})
+
 //always remember that the custom event you emit, takes the second parameter as an argument
 //and you can extract it from a function.
 </script>
 
 <template>
+  <Audio @playAudio="playNinjaIntro" />
   <h1 class="ninja">Ninja React🥷</h1>
   <button @click="start" :disabled="isPlaying">
     <span class="text">play</span>
@@ -30,7 +51,12 @@ const endGame = (reactionTime) => {
   <div class="cursor-container">
     <Cursor1 />
   </div>
-  <Block v-if="isPlaying" :delay="delay" @end="endGame" />
+  <Block
+    v-if="isPlaying"
+    :delay="delay"
+    @end="endGame"
+    :playAudio="playAudio"
+  />
   <p>
     Reaction time: <span class="score">{{ score }}</span
     >ms
