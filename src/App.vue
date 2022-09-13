@@ -5,15 +5,19 @@ import Block from "./components/Block.vue"
 import Audio from "./components/audio.vue"
 
 import { useSound } from "@vueuse/sound"
-import bgMusic from "./assets/audio/blades.mp3"
+import bgMusic from "./assets/audio/bgmusic.mp3"
+import Instructions from "./components/Instructions.vue"
 
 const { play, stop } = useSound(bgMusic, {
-  loop: true
+  loop: true,
+  volume: 0.25
 })
 const isPlaying = ref(false)
 const delay = ref(null)
 const score = ref(null)
 const showResults = ref(false)
+
+//show shuriken when before
 
 const start = () => {
   isPlaying.value = true
@@ -28,9 +32,9 @@ const endGame = async (reactionTime) => {
   isPlaying.value = false
   showResults.value = true
 
-  await new Promise((res) => setTimeout(res, 3000))
+  // await new Promise((res) => setTimeout(res, 3000))
 
-  showResults.value = false
+  // showResults.value = false
 }
 
 const generateRandomNumber = (min, max) => {
@@ -38,7 +42,7 @@ const generateRandomNumber = (min, max) => {
 }
 
 function playNinjaIntro(audio) {
-  if (audio) {
+  if (audio === true) {
     play()
   } else {
     stop()
@@ -54,6 +58,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <Instructions />
   <Audio @playAudio="playNinjaIntro" />
   <h1 class="ninja">Ninja React🥷</h1>
   <button @click="start" :disabled="isPlaying">
