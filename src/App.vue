@@ -7,6 +7,7 @@ import Audio from "./components/audio.vue"
 import { useSound } from "@vueuse/sound"
 import bgMusic from "./assets/audio/bgmusic.mp3"
 import Instructions from "./components/Instructions.vue"
+import Results from "./components/Results.vue"
 
 const { play, stop } = useSound(bgMusic, {
   loop: true,
@@ -74,10 +75,7 @@ onMounted(async () => {
     @end="endGame"
     :playAudio="playAudio"
   />
-  <p v-if="showResults">
-    Reaction time: <span class="score">{{ score }}</span
-    >ms
-  </p>
+  <Results v-if="showResults" :score="score" />
 </template>
 
 <style>
@@ -97,10 +95,5 @@ onMounted(async () => {
 
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
-}
-
-.score {
-  font-family: "Assassin Ninja";
-  font-family: "Asian Ninja";
 }
 </style>
