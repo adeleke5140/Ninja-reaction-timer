@@ -6,7 +6,7 @@
     @mousemove="handleKunaiPosition"
     ref="block"
   >
-    Click me
+    strike
     <img src="../assets/kunai2.png" class="kunai" ref="kunai" />
   </div>
 </template>
@@ -107,6 +107,17 @@ onUnmounted(() => {
   margin: 40px auto;
   cursor: none;
   position: relative;
+  transform: rotate(-1deg);
+  border-top-left-radius: 37px 140px;
+  border-top-right-radius: 23px 130px;
+  border-bottom-left-radius: 110px 19px;
+  border-bottom-right-radius: 120px 24px;
+  border: solid 1px #0faf87;
+  transform: rotate(-1deg);
+  box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
+  transition: all 0.13s ease-in;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .kunai {
