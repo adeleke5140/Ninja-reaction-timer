@@ -13,6 +13,9 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, watchEffect } from "vue"
+//current Task
+//show shuriken before component shows
+//once the components mount but before it shows up
 
 const props = defineProps({
   delay: Number
