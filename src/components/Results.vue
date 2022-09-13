@@ -5,7 +5,6 @@
       >ms
     </p>
     <p class="rank" v-if="score < 600">{{ ninjaResult }}, shinobi-kun</p>
-    <p class="rank" v-else>You are not a Shinobu yet. {{ ninjaResult }}</p>
   </div>
 </template>
 
@@ -16,7 +15,7 @@ const props = defineProps(["score"])
 const ninjaResult = ref("")
 
 function getNinjaResult(score) {
-  console.log(score, "function fired")
+  console.log(score)
   if (score < 100) {
     ninjaResult.value = "You are worthy of being  sensei!"
   } else if (score > 100 && score <= 250) {
@@ -37,15 +36,18 @@ onMounted(() => {
 </script>
 
 <style>
-.result,
-.score {
-  font-family: "Assassin Ninja";
+.result {
   font-family: "Asian Ninja";
 }
+
+/* .score {
+  font-family: "Asian Ninja";
+} */
 
 .rank {
   font-size: 1.4em;
   color: #0faf87;
   font-weight: bold;
+  font-family: "Assassin Ninja";
 }
 </style>
