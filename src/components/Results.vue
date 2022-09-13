@@ -4,8 +4,8 @@
       Reaction time: <span class="score">{{ score }}</span
       >ms
     </p>
-    <p v-if="score < 600">{{ ninjaResult }}, shinobi-kun</p>
-    <p v-else>You are not a Shinobu yet. {{ ninjaResult }}</p>
+    <p class="rank" v-if="score < 600">{{ ninjaResult }}, shinobi-kun</p>
+    <p class="rank" v-else>You are not a Shinobu yet. {{ ninjaResult }}</p>
   </div>
 </template>
 
@@ -41,5 +41,11 @@ onMounted(() => {
 .score {
   font-family: "Assassin Ninja";
   font-family: "Asian Ninja";
+}
+
+.rank {
+  font-size: 1.4em;
+  color: #0faf87;
+  font-weight: bold;
 }
 </style>
