@@ -1,9 +1,10 @@
 <template>
   <div class="instructions">
     <p>
-      Your mission is to click on the box, as fast as you can once it appears!
+      Your mission is to strike at the target as fast as you can once it
+      appears!
     </p>
-    <p>Are you ready to take in On, Shinobi?🥷🏼</p>
+    <p>Are you ready to take in On, <span class="green">Shinobi?</span> 🥷🏼</p>
   </div>
 </template>
 
@@ -30,7 +31,12 @@
 }
 
 .instructions:hover {
-  transform: translateY(10px) rotate(1deg);
+  transform: translateX(10px) rotate(1deg);
   box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
+}
+
+.green {
+  text-transform: uppercase;
+  color: #0faf87;
 }
 </style>
