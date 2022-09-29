@@ -20,10 +20,10 @@
   padding: 20px;
   margin: 10px;
   font-size: 0.8rem;
-  border-top-left-radius: 37px 140px;
+  /* border-top-left-radius: 37px 140px;
   border-top-right-radius: 23px 130px;
   border-bottom-left-radius: 110px 19px;
-  border-bottom-right-radius: 120px 24px;
+  border-bottom-right-radius: 120px 24px; */
   border: solid 1px #0faf87;
   transform: rotate(-1deg);
   box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
@@ -31,7 +31,7 @@
 }
 
 .instructions:hover {
-  transform: translateX(10px) rotate(1deg);
+  transform: translateY(10px) rotate(1deg);
   box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
 }
 

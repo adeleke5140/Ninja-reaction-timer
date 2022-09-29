@@ -71,10 +71,10 @@ function playAudio() {
   padding: 0.3em;
   padding-bottom: 0.1em;
   box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
-  border-top-left-radius: 37px 140px;
+  /* border-top-left-radius: 37px 140px;
   border-top-right-radius: 23px 130px;
   border-bottom-left-radius: 110px 19px;
-  border-bottom-right-radius: 120px 24px;
+  border-bottom-right-radius: 120px 24px; */
   transform: rotate(-3deg);
 }
 
