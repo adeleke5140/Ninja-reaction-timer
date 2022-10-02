@@ -1,11 +1,15 @@
-# Ninja Reaction Timer
+# Shinobi Striker
 
-This is a small sample application to test out my vue skills, wachaa🥷
+Web-based game to test your Ninja striking skills, wachaa🥷
 
-## Get set up
+## Wanna take a look at the source?
 
 To get started:
 
 1. `Clone the repo`
 2. Run `yarn install`
 3. Run `yarn run dev`
+
+## Play the Demo
+
+Check out the Demo here...
