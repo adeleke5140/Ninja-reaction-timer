@@ -2,6 +2,8 @@
 
 Web-based game to test your Ninja striking skills, wachaa🥷
 
+Work in Progress.
+
 ## Wanna take a look at the source?
 
 To get started:
